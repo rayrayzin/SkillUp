@@ -23,11 +23,8 @@ class Login extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             Image.asset('assets/images/logo.png'),
-
             const SizedBox(height: 30),
-
             const Text(
               'ENTRE',
               style: TextStyle(
@@ -36,9 +33,7 @@ class Login extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 30),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: TextField(
@@ -59,9 +54,7 @@ class Login extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
               ),
             ),
-
             const SizedBox(height: 20),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: TextField(
@@ -79,14 +72,20 @@ class Login extends StatelessWidget {
                   ),
                   filled: true,
                   fillColor: Colors.white.withOpacity(0.3),
+                  suffixIcon: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_circle_right_outlined,
+                      color: Colors.blueAccent,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("/Lista");
+                    },
+                  ),
                 ),
                 style: const TextStyle(color: Colors.white),
               ),
             ),
-            
-
             const SizedBox(height: 40),
-
             const Text(
               'ou',
               style: TextStyle(
@@ -95,27 +94,26 @@ class Login extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 40),
-
-
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamed("/Cadastro");
-
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xff1B4E79),
-                padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 25),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 60, vertical: 25),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
               child: const Text(
                 'CADASTRE-SE',
-                style: TextStyle(color: Colors.white, fontSize: 25,
-                fontWeight: FontWeight.bold,),
-                
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],
