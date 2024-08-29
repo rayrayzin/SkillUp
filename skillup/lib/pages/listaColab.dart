@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skillup/style/colors.dart';
 
 class ListaColab extends StatefulWidget {
   const ListaColab({super.key});
@@ -108,7 +107,7 @@ class _ListaColabState extends State<ListaColab>
               labelColor: Colors.white,
               unselectedLabelColor: Colors.grey,
               indicatorSize: TabBarIndicatorSize.tab,
-              tabs: [
+              tabs: const [
                 Tab(text: 'Colaboradores'),
                 Tab(text: 'Administrador'),
               ],

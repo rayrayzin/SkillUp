@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skillup/pages/cadastro.dart';
+import 'package:skillup/pages/criaTreina.dart';
 import 'package:skillup/pages/curso.dart';
 import 'package:skillup/pages/listaColab.dart';
 import 'package:skillup/pages/login.dart';
@@ -17,6 +18,7 @@ runApp(MaterialApp(
    "/Lista":(context) => const ListaColab(),
    "/Curso":(context) => const Curso(),
    "/Treinamento":(context) => const TreinamentoPage(),
+   "/CriaTreinamento":(context) => const CriaTreinamento(),
   },
 ));
 }

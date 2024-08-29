@@ -71,21 +71,12 @@ class _TreinamentoPageState extends State<TreinamentoPage> {
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: () {
+                Navigator.of(context).pushNamed("/CriaTreinamento");
                 setState(() {
                   _treinamentos.add('Novo Treinamento');
                 });
               },
               child: const Text('Adicionar Treinamento'),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _treinamentos.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(_treinamentos[index]),
-                );
-              },
             ),
           ),
         ],
