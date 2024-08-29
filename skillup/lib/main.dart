@@ -4,6 +4,7 @@ import 'package:skillup/pages/curso.dart';
 import 'package:skillup/pages/listaColab.dart';
 import 'package:skillup/pages/login.dart';
 import 'package:skillup/pages/perf_adm.dart';
+import 'package:skillup/pages/treinamentos.dart';
 
 void main() {
 runApp(MaterialApp(
@@ -15,6 +16,7 @@ runApp(MaterialApp(
    "/Cadastro":(context) => const Cadastro(),
    "/Lista":(context) => const ListaColab(),
    "/Curso":(context) => const Curso(),
+   "/Treinamento":(context) => const TreinamentoPage(),
   },
 ));
 }

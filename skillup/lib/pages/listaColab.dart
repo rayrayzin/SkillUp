@@ -8,7 +8,8 @@ class ListaColab extends StatefulWidget {
   State<ListaColab> createState() => _ListaColabState();
 }
 
-class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateMixin {
+class _ListaColabState extends State<ListaColab>
+    with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   late TabController _tabController;
   final TextEditingController _searchController = TextEditingController();
@@ -24,7 +25,9 @@ class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateM
     _searchController.addListener(() {
       setState(() {
         _filteredColaboradores = _colaboradores
-            .where((colaborador) => colaborador.toLowerCase().contains(_searchController.text.toLowerCase()))
+            .where((colaborador) => colaborador
+                .toLowerCase()
+                .contains(_searchController.text.toLowerCase()))
             .toList();
       });
     });
@@ -59,21 +62,25 @@ class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateM
                           Icons.menu,
                           color: Colors.white,
                         ),
-                        onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+                        onPressed: () =>
+                            _scaffoldKey.currentState?.openDrawer(),
                       ),
                 Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: branco,
-                        labelText: 'Buscar colaborador',
+                        fillColor: Colors.white,
+                        hintText: 'Buscar colaborador',
                         prefixIcon: const Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none
                         ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
                       ),
                     ),
                   ),
@@ -98,14 +105,12 @@ class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateM
                   bottomRight: Radius.circular(10),
                 ),
               ),
-              dividerColor: Colors.white,
-              indicatorPadding: const EdgeInsets.only(left: 8.0, right: 8.0),
               labelColor: Colors.white,
-              unselectedLabelColor: Colors.white,
+              unselectedLabelColor: Colors.grey,
               indicatorSize: TabBarIndicatorSize.tab,
               tabs: [
-                _buildTab('Colaboradores', 0),
-                _buildTab('Administrador', 1),
+                Tab(text: 'Colaboradores'),
+                Tab(text: 'Administrador'),
               ],
             ),
           ),
@@ -137,7 +142,8 @@ class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateM
           children: [
             Text(
               "Julia",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             Text(
               "Administrador",
@@ -146,27 +152,6 @@ class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateM
           ],
         ),
       ],
-    );
-  }
-
-  Widget _buildTab(String label, int index) {
-    final isSelected = _tabController.index == index;
-
-    return Tab(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF2282FF) : const Color(0xFF002657),
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(10),
-            bottomRight: Radius.circular(10),
-          ),
-        ),
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(label, style: const TextStyle(fontSize: 16)),
-        ),
-      ),
     );
   }
 
@@ -195,19 +180,30 @@ class _ListaColabState extends State<ListaColab> with SingleTickerProviderStateM
                 color: Color.fromRGBO(50, 64, 82, 1),
               ),
               accountName: Text("Julia", style: TextStyle(color: Colors.white)),
-              accountEmail: Text("Administrador", style: TextStyle(color: Colors.white70)),
+              accountEmail: Text("Administrador",
+                  style: TextStyle(color: Colors.white70)),
             ),
             ListTile(
-              title: const Text('Lista de colaboradores', style: TextStyle(color: Colors.white)),
+              title: const Text('Lista de colaboradores',
+                  style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Handle drawer option tap
               },
             ),
             ListTile(
-              title: const Text('Lista de treinamentos', style: TextStyle(color: Colors.white)),
+              title: const Text('Lista de treinamentos',
+                  style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Handle drawer option tap
+                Navigator.of(context).pushNamed("/Treinamento");
               },
+            ),
+            const SizedBox(height: 450),
+            ListTile(
+              title: const Text('Sair',
+                  style: TextStyle(color: Color.fromARGB(255, 224, 66, 66))),
+              onTap: () {
+                 Navigator.of(context).pushNamed("/");
+              },
+              
             ),
           ],
         ),
